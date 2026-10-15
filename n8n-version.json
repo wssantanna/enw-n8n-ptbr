@@ -1,8 +1,8 @@
 {
-  "version": "2.1.1",
-  "commit": "ec8f1a56cbd702355b05d8c25827d61a957b2170",
-  "image": "n8nio/n8n",
-  "imageDigest": "sha256:0f10214f8f9484581288861f682eb73482f923c2c697d57fa300568433bb9ff1",
-  "nodeVersion": "22.21.1",
-  "locale": "pt"
+	"version": "2.43.6",
+	"commit": "ffbb9ec54fc02e7f8b54a0b6f41d0a84d0a817f5",
+	"image": "n8nio/n8n",
+	"imageDigest": "sha256:dd580fe1ab6e99e85bc66f2acf8bc8c5e9409fbe61b2e2803c5024403ef52833",
+	"nodeVersion": "24",
+	"locale": "pt"
 }
