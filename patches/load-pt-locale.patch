@@ -1,34 +1,24 @@
-ENW PT-BR: registrar o locale "pt" na criação da instância do vue-i18n.
-
-No n8n 2.1.1 nenhum código de produção carrega um JSON de idioma além do inglês
-(o carregamento existe só no HMR de dev) e vários rótulos são resolvidos com
-i18n.baseText() no topo dos módulos (ex.: descritores de Data tables, MCP, Chat),
-antes de qualquer troca de idioma.
-
-Este patch importa explicitamente locales/pt.json, registra-o junto do inglês e
-usa "pt" como locale inicial. Depois disso o próprio App.vue continua chamando
-setLanguage(N8N_DEFAULT_LOCALE) normalmente; o fallback para inglês é mantido.
-
 diff --git a/packages/frontend/@n8n/i18n/src/index.ts b/packages/frontend/@n8n/i18n/src/index.ts
+index 8f3dc01..236e548 100644
 --- a/packages/frontend/@n8n/i18n/src/index.ts
 +++ b/packages/frontend/@n8n/i18n/src/index.ts
-@@ -4,6 +4,7 @@
- import { createI18n } from 'vue-i18n';
-
+@@ -5,6 +5,7 @@ import { createI18n } from 'vue-i18n';
+ import type { I18n } from 'vue-i18n';
+ 
  import englishBaseText from './locales/en.json';
 +import portugueseBaseText from './locales/pt.json';
  import type { BaseTextKey, LocaleMessages, INodeTranslationHeaders } from './types';
  import {
  	deriveMiddleKey,
-@@ -16,9 +17,9 @@
-
- export const i18nInstance = createI18n({
+@@ -21,9 +22,9 @@ export type * from './types';
+ type LooseSchema = Record<string, unknown>;
+ export const i18nInstance: I18n<LooseSchema, LooseSchema, LooseSchema, string, false> = createI18n({
  	legacy: false,
 -	locale: 'en',
 +	locale: 'pt',
  	fallbackLocale: 'en',
 -	messages: { en: englishBaseText },
-+	messages: { en: englishBaseText, pt: portugueseBaseText as typeof englishBaseText },
++	messages: { en: englishBaseText, pt: portugueseBaseText },
  	warnHtmlMessage: false,
  });
-
+ 
